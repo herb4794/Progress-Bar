@@ -33,12 +33,12 @@
                 </div>
             </div>
             <div class="row">
-            <% @products.each do |product| %>
+            <% @products.each do |product, index| %>
             <div class="col-xs-3">
-            <div class="thumbnail">
-            <%= image_tag product[:image_url] %>
+            <div class="thumbnail"">
+            <%= image_tag product[:image_url]%>
                 <div class="caption">
-                    <h3><%= product[:name] %></h3>
+                    <h3><%= product[:name]%></h3>
                     <p><%= product[:description] %></p>
                     <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>                
                 </div>
@@ -72,5 +72,5 @@
             </div>
             </div>
         </div>
-    </div>
+    </div> 
 </div>

@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+PRODUCTS_COUNT = 100
+
+(1..PRODUCTS_COUNT).each do |index|
+product = { 
+            name: "RGB機箱",
+            description: "IMG_888",
+            image_url: "/image/IMG_8997.PNG", 
+         }
+
+         Product.create(product)
+        end

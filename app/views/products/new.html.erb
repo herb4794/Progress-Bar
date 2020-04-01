@@ -1,0 +1,26 @@
+<h3>新增產品</h3>
+<%= form_with(url: "/products", method: "post") do %>
+<label>
+    名稱
+    <input type="text" name="name" />
+</label>
+    <br/>
+<label>
+    敘述
+    <input type="text" name="description" />
+</label>
+    <br/>
+<label>
+    圖片連接
+    <input type="text" name="image_url" />
+</label>
+    <br/>
+<label>
+    價格
+    <input type="text" name="price" />
+</label>
+    <br/>
+    <button type="submit">
+    新增
+    </button>
+<% end %>

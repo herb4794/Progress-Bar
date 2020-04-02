@@ -24,9 +24,19 @@ class ProductsController < ApplicationController
     end
 
     def new
+        @note = flash[:note]
     end
 
     def create
+       product = Product.create(product_permit)
+        flash[:note] = product.id
+        redirect_to action: :new
+
     end
+
+    def product_permit
+         params.permit([:name, :description, :image_url, :price])
+    end
+
     
 end

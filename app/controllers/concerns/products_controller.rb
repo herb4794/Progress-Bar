@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
     LIMITED_PRODUCTS_NUMBER = 20
 
     def index
-        @ad = { 
+        @ad = {
             title: "大型廣告",
             des: "這是廣告!!!",
             action_title: "閱讀更多",
@@ -17,9 +17,14 @@ class ProductsController < ApplicationController
         @products = Product.all
 
         @first_page = 1
-        @last_page = (@products.count / LIMITED_PRODUCTS_NUMBER)
+        count = @products.count
 
-        @products = @products.offset((@page - 1) * 
+        @last_page = (count / LIMITED_PRODUCTS_NUMBER)
+        if count % LIMITED_PRODUCTS_NUMBER
+          @last_page  += 1
+        end
+
+        @products = @products.offset((@page - 1) *
         LIMITED_PRODUCTS_NUMBER).limit(LIMITED_PRODUCTS_NUMBER)
     end
 
@@ -37,6 +42,4 @@ class ProductsController < ApplicationController
     def product_permit
          params.permit([:name, :description, :image_url, :price])
     end
-
-    
 end

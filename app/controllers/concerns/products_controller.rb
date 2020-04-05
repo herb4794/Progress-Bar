@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
-    after_action :test_after_action
-    skip_after_action :test_after_action
+    # after_action :test_after_action
+    # skip_after_action :test_after_action
     LIMITED_PRODUCTS_NUMBER = 20
 
     def index
@@ -42,9 +42,9 @@ class ProductsController < ApplicationController
 
     end
 
-    def test_after_action
-        flash[:note] = "after"
-    end
+    # def test_after_action
+    #     flash[:note] = "after"
+    # end
 
     def product_permit
          params.permit([:name, :description, :image_url, :price])

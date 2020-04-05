@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+
+    after_action :test_after_action
+    skip_after_action :test_after_action
     LIMITED_PRODUCTS_NUMBER = 20
 
     def index
@@ -37,6 +40,10 @@ class ProductsController < ApplicationController
         flash[:note] = product.id
         redirect_to action: :new
 
+    end
+
+    def test_after_action
+        flash[:note] = "after"
     end
 
     def product_permit

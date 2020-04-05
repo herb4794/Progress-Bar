@@ -1,5 +1,5 @@
 <h3>新增產品</h3>
-<%= form_tag("/products", method: "post") do %>
+<form action="/products" accept-charset="UTF-8" method="post">
     <label>
         名稱
         <input type="text" name="name" />
@@ -23,5 +23,5 @@
         <button type="submit">
         新增
         </button>
-    <% end %>
+        </form>
     <%= @note %>

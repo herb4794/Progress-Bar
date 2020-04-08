@@ -1,7 +1,5 @@
 <h3></h3>新增產品</h3>
-<form action="/products" accept-charset="UTF-8" method="post">
-    <input type="hidden" name="authenticity_token"
-    value="QNFSeuomqd+FpF6BEKJCJHQ8jD0jX8OR0R0m0xH4Oz60qNuEm5hv63WCqi29RjOiq2qJKuDi2gVfr3x3LuVYjQ==">
+<%= form_tag("/products", mother: :post) do %>
     <label>
         名稱
         <input type="text" name="name" />
@@ -25,21 +23,5 @@
         <button type="submit">
         新增
         </button>
-</form>
-        
+       <% end %>
  <%= @note %>
-
-<script>
-    $(function(){
-      var token=$('meta[name="csrf-token"]').attr('content');
-      
-      var inputToken = $('input[name=authenticity_token]');
-      inputToken.val(token)
-
-        $.ajax({
-    method: "POST",
-    url: "/products",
-    data: { name: "John", description: "Boston", image_url: "", price: 122, authenticity_token: token }
-    })
-        })
-</script>

@@ -42,6 +42,17 @@ class ProductsController < ApplicationController
 
     end
 
+    def edit
+        @product = Product.find(params[:id])
+    end
+
+    def update
+        product = Product.find(params[:id])
+        product.update(product_permit)
+
+        redirect_to action: :edit
+    end
+
     # def test_after_action
     #     flash[:note] = "after"
     # end

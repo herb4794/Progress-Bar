@@ -55,6 +55,13 @@ class ProductsController < ApplicationController
         redirect_to action: :edit
     end
 
+    def destroy
+        product = Product.find(params[:id])
+        product.destroy 
+
+        redirect_to action: :index
+    end
+
     # def test_after_action
     #     flash[:note] = "after"
     # end

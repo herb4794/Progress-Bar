@@ -24,11 +24,15 @@ class ProductsController < ApplicationController
 
         @last_page = (count / LIMITED_PRODUCTS_NUMBER)
         if count % LIMITED_PRODUCTS_NUMBER
-          @last_page  += 1
+        @last_page  += 1
         end
 
         @products = @products.offset((@page - 1) *
         LIMITED_PRODUCTS_NUMBER).limit(LIMITED_PRODUCTS_NUMBER)
+    end
+
+    def show
+        @product = Product.find_by_id(params[:id])
     end
 
     def new
@@ -38,14 +42,18 @@ class ProductsController < ApplicationController
     end
 
     def create
-       product = Product.create(product_permit)
+        product = Product.create(product_permit)
         flash[:note] = product.id
         redirect_to action: :new
 
     end
 
     def edit
-        @product = Product.find(params[:id])
+        @product = Product.find_by_id(params[:id])
+        if @product.blank?
+            redirect_to action: :index
+            return
+        end
     end
 
     def update
@@ -60,6 +68,7 @@ class ProductsController < ApplicationController
         product.destroy 
 
         redirect_to action: :index
+        
     end
 
     # def test_after_action
@@ -67,6 +76,8 @@ class ProductsController < ApplicationController
     # end
 
     def product_permit
-         params.require(:product).permit([:name, :description, :image_url, :price])
+        params.require(:product).permit([:name, :description, :image_url, :price])
     end
+
+    
 end

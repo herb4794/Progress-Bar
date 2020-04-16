@@ -9,11 +9,11 @@ class ProductsController < ApplicationController
             title: "大型廣告",
             des: "這是廣告!!!",
             action_title: "閱讀更多",
-         }
+        }
 
-         if params[:page]
-             @page = params[:page].to_i
-         else
+        if params[:page]
+            @page = params[:page].to_i
+        else
             @page = 1
         end
 

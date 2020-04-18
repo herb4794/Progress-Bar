@@ -14,7 +14,7 @@ product = {
             name: "RGB機箱",
             description: "IMG_888",
             image_url: "/image/IMG_8997.PNG", 
-         }
+        }
 
-         Product.create(product)
+        Product.create(product)
         end

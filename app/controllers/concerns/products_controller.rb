@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+    before_action :redirect_to_root_if_not_log_in, except: [:index, :show]
 
     # after_action :test_after_action
     # skip_after_action :test_after_action
@@ -77,6 +78,14 @@ class ProductsController < ApplicationController
 
     def product_permit
         params.require(:product).permit([:name, :description, :image_url, :price])
+    end
+
+    def redirect_to_root_if_not_log_in
+        if !current_user
+        flash[:notice] = "你尚未登入"
+        redirect_to root_path
+        return
+        end
     end
 
     

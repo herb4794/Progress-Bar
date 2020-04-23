@@ -1,8 +1,7 @@
 class ProductsController < ApplicationController
     before_action :redirect_to_root_if_not_log_in, except: [:index, :show]
 
-    # after_action :test_after_action
-    # skip_after_action :test_after_action
+
     LIMITED_PRODUCTS_NUMBER = 20
 
     def index
@@ -17,6 +16,8 @@ class ProductsController < ApplicationController
         else
             @page = 1
         end
+
+        @categories = Category.all
 
         @products = Product.all
 

@@ -1,26 +1,22 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-3">
+        <ul class="col-xs-3">
+
+      <% @categories.each do |category|%>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <%= category.name %>
             <ul class="list-group">
+              <% category.subcategories.each do |subcategory| %>
                 <li class="list-group-item">
-                        類別
-                        <ul class="list-group">
-                            <li class="list-group-item">副類別</li>
-                            <li class="list-group-item">副類別</li>
-                            <li class="list-group-item">副類別</li>
-                            <li class="list-group-item">副類別</li>
-                        </ul>
+                  <%= subcategory.name %>
                 </li>
-                <li class="list-group-item">
-                        類別
-                        <ul class="list-group">
-                            <li class="list-group-item">副類別</li>
-                            <li class="list-group-item">副類別</li>
-                            <li class="list-group-item">副類別</li>
-                            <li class="list-group-item">副類別</li>
-                        </ul>
-                </li>
-                </ul>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      <% end %>
+           
         </div>
         <div class="col-xs-9">
             <div class="row">

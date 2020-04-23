@@ -11,9 +11,7 @@
 // about supported directives.
 //
 //
-//= require bootstrap-sprockets
 //= require rails-ujs
-//= require jquery3
-//= require jquery
-//= require bootstrap
+//= require_tree ./jquery
+//= require bootstrap-sprockets
 //= require_tree .

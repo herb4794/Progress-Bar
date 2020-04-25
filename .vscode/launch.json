@@ -1,14 +1,69 @@
 {
-    // 使用 IntelliSense 以得知可用的屬性。
-    // 暫留以檢視現有屬性的描述。
-    // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Debug Local File",
-            "type": "Ruby",
-            "request": "launch",
-            "program": "${workspaceRoot}/main.rb"
-        }
-    ]
+"version": "5.2.4.2",
+"configurations": [
+    {
+        "name": "Start Rails server",
+        "type": "Ruby",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "program": "${workspaceRoot}/bin/rails",
+        "args": [
+            "server",
+            "-p",
+            "3000"
+        ]
+    },
+    {
+        "name": "Debug Rails server",
+        "type": "Ruby",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "useBundler": true,
+        "pathToBundler": "/path/to/rubygem/wrappers/bundle",
+        "pathToRDebugIDE": "/path/to/rubygem/gems/ruby-debug-ide-x.x.x/bin/rdebug-ide",
+        "program": "${workspaceRoot}/bin/rails",
+        "args": [
+            "server",
+            "-p",
+            "3000"
+        ]
+    },
+    {
+        "name": "Run RSpec - all",
+        "type": "Ruby",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "program": "/path/to/rubygem/bin/rspec",
+        "args": [
+            "--pattern",
+            "${workspaceRoot}/spec/**/*_rspec.rb"
+        ]
+    },
+    {
+        "name": "Debug RSpec - open spec file",
+        "type": "Ruby",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "useBundler": true,
+        "pathToBundler": "/path/to/rubygem/wrappers/bundle",
+        "pathToRDebugIDE": "/path/to/rubygem/gems/ruby-debug-ide-x.x.x/bin/rdebug-ide",
+        "debuggerPort": "1235",
+        "program": "/path/to/rubygem/bin/rspec",
+        "args": [
+            "${file}"
+        ]
+    },
+    {
+        "name": "Debug RSpec - open spec file on a certain line",
+        "type": "Ruby",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "useBundler": true,
+        "pathToBundler": "/path/to/rubygem/wrappers/bundle",
+        "pathToRDebugIDE": "/path/to/rubygem/gems/ruby-debug-ide-x.x.x/bin/rdebug-ide",
+        "debuggerPort": "1235",
+        "program": "/path/to/rubygem/bin/rspec",
+        "args": ["${file}:${lineNumber}"]
+    }
+]
 }

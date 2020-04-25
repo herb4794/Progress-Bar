@@ -3,7 +3,7 @@
     <div class="caption">
         <h3><%= "#{product.id}. #{product.name}" %></h3>
         <p><%= product.description %></p>
-        <p>類別:<%= product.subcategory.try(:category).try(:name )%> / <%= product.subcategory.try(:name) %></p>
+        <p>類別:<%= product.subcategory.try(:name_with_category) %></p>
         <% if current_user%>
         <div> 
             <%= link_to "Edit", edit_product_path(product), class:"btn btn-primary" %>

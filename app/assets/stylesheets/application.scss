@@ -16,3 +16,16 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.left-bar {
+    width: 25%; display: inline-block;
+}
+.side-bar-ul{
+    width: 100%;
+}
+.main-container{
+    width: 100%;
+}
+.big-layer{
+    float: right;
+}

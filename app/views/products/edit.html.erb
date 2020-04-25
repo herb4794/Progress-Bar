@@ -12,5 +12,10 @@
 <%= p.label :price, "價格" %>:
 <%= p.number_field :price %><br />
 
+<%= p.label :subcategory_id, "類別" %>
+<%= p.select("subcategory_id", Subcategory.all.collect {|s| [ s.name_with_category, s.id ] }, 
+{ include_blank: "請選擇" })%><br />
+
+
 <%= p.submit "更新" %>
 <% end %>

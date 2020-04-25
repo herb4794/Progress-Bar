@@ -38,14 +38,13 @@ class ProductsController < ApplicationController
     end
 
     def new
-        @note = flash[:note]
 
         @product = Product.new
     end
 
     def create
         product = Product.create(product_permit)
-        flash[:note] = product.id
+        flash[:notice] = "建立成功"
         redirect_to action: :new
 
     end
@@ -62,6 +61,7 @@ class ProductsController < ApplicationController
         product = Product.find(params[:id])
         product.update(product_permit)
 
+        flash[:notice] = "更新成功"
         redirect_to action: :edit
     end
 
@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
     # end
 
     def product_permit
-        params.require(:product).permit([:name, :description, :image_url, :price])
+        params.require(:product).permit([:name, :description, :image_url, :price, :subcategory_id])
     end
 
     def redirect_to_root_if_not_log_in

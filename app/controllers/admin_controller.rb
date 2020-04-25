@@ -7,14 +7,13 @@ class AdminController < ApplicationController
     end
 
     def log_out
-            session[:current_user_id] = nil
-            flash[:notice] = "登出成功"
-            redirect_to root_path
-            return
-        end 
+        session[:current_user_id] = nil
+        flash[:notice] = "登出成功"
+        redirect_to root_path
+        return
+    end 
 
-    def create_session
-        
+    def create_session       
         user = User.find_by(email: params[:email], password: encrypted(params[:password]) )
 
         if user

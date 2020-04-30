@@ -5,6 +5,21 @@ Rails.application.routes.draw do
 
     resources :products
 
+    resources :categories, param: :category_id, only: [] do 
+      collection do
+      end
+
+      member do
+        get :products
+        
+        resources :subcategories, param: :subcategory_id, only: []do
+          member do
+            get :products
+          end
+        end
+      end
+    end
+
     get "admin/log_in", to: "admin#log_in"
     post "admin/create_session", to: "admin#create_session"
     get "admin/log_out", to: "admin#log_out"

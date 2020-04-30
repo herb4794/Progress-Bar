@@ -7,7 +7,7 @@
 <%= p.text_field :description %><br />
 
 <%= p.label :image, "圖片" %>:<br/>
-<%= image_tag @product.image_url, size: "300x200", id: "target", original_url: @product.image_url  %><br/>
+<%= image_tag (@product.image_url || "https://www.infincommunity.com/wp-content/uploads/woocommerce-placeholder-300x300.png"), size: "300x200", id: "target", original_url: @product.image_url  %><br/>
 <%= p.file_field :image, accept: "image/gif, image/jpeg, image/png" %><br />
 
 <%= p.label :price, "價格" %>:

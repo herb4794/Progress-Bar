@@ -1,5 +1,5 @@
 <div class="thumbnail">
-  <%= image_tag product.image_url %>
+  <%= image_tag (product.image_url || "https://www.infincommunity.com/wp-content/uploads/woocommerce-placeholder-300x300.png") %>
   <div class="caption">
     <h3><%= "#{product.id}. #{product.name}" %></h3>
     <p><%= product.description %></p>
@@ -11,4 +11,4 @@
     </div>
     <% end %>
   </div>
-</div>
+</div> 

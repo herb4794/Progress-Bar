@@ -1,0 +1,69 @@
+<div class="container main-container">
+    <div class="row left-bar">
+        <ul class="col-xs-12">
+
+      <% @categories.each do |category|%>
+        <ul class="list-group">
+          <li class="list-group-item">
+          <%= link_to products_category_path(category) do %>
+            <%= category.name %>
+            <% end %>
+            <ul class="list-group">
+              <% category.subcategories.each do |subcategory| %>
+                <li class="list-group-item">
+                <%= link_to products_subcategory_path(category_id: category.id, subcategory_id: subcategory.id) do %>
+                  <%= subcategory.name %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      <% end %>
+           
+        </div>
+        <div class="col-xs-9 big-layer">
+            <div class="row">
+                <div class="col-xs-12">
+                <div class="jumbotron">
+                <h1><%= @ad[:title] %></h1>
+                <p><%= @ad[:des] %></p>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button"><%= @ad[:action_title] %> </a></p>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+            <% @products.each do |product, index| %>
+            <div class="col-xs-3">
+            <%= render 'products/card/small', product: product %>
+            </div>
+             <% end %>
+            </div>
+            <div class="row">
+            <div class="col-xs-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                <% if @page > @first_page %>
+                        <li>
+                        <%= link_to root_path(page: (@page - 1)) do %>
+                            <span aria-hidden="true">&laquo;</span>
+                            <% end %>
+                        </li>
+                    <% end %>
+                    <% (@first_page..@last_page).each do |page_number| %>
+                        <li><%= link_to page_number, root_path(page: page_number) %></li>
+                    <% end %>
+                    <% if @page < @last_page %>
+                        <li>
+                        <%= link_to root_path(page: (@page + 1)) do %>
+                        <span aria-hidden="true">&raquo;</span>
+                        <% end %>
+                        </li>
+                    <% end %>
+                </ul>
+                </nav>
+            </div>
+            </div>
+        </div>
+    </div> 
+</div>

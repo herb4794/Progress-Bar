@@ -1,36 +1,14 @@
 class ProductsController < ApplicationController
-    before_action :redirect_to_root_if_not_log_in, except: [:index, :show]
+    before_action :redirect_to_root_if_not_log_in, except: [:index, :show, :products]
 
+    before_action :prepare_index, only: [:index, :products]
+    before_action :get_products, only: [:index, :products]
+    before_action :create_pagination, only: [:index, :products]
 
     LIMITED_PRODUCTS_NUMBER = 20
 
     def index
-        @ad = {
-            title: "大型廣告",
-            des: "這是廣告!!!",
-            action_title: "閱讀更多",
-        }
 
-        if params[:page]
-            @page = params[:page].to_i
-        else
-            @page = 1
-        end
-
-        @categories = Category.all
-
-        @products = Product.all
-
-        @first_page = 1
-        count = @products.count
-
-        @last_page = (count / LIMITED_PRODUCTS_NUMBER)
-        if count % LIMITED_PRODUCTS_NUMBER
-        @last_page  += 1
-        end
-
-        @products = @products.offset((@page - 1) *
-        LIMITED_PRODUCTS_NUMBER).limit(LIMITED_PRODUCTS_NUMBER)
     end
 
     def show
@@ -86,10 +64,6 @@ class ProductsController < ApplicationController
         
     end
 
-    # def test_after_action
-    #     flash[:note] = "after"
-    # end
-
     def product_permit
         params.require(:product).permit([:name, :description, :price, :subcategory_id])
     end
@@ -114,5 +88,51 @@ class ProductsController < ApplicationController
         end
 
         return "/uploads/products/" + newFile.original_filename
+    end
+
+    def prepare_index
+        create_ad
+        get_current_page
+        get_all_categories
+    end
+
+    def create_ad
+        @ad = {
+            title: "大型廣告",
+            des: "這是廣告!!!",
+            action_title: "閱讀更多",
+        }
+    end
+
+    def get_current_page
+
+        if params[:page]
+            @page = params[:page].to_i
+        else
+            @page = 1
+        end
+    end
+
+    def get_all_categories
+        @categories = Category.all
+    end
+
+    def get_products
+
+        @products = Product.all
+
+    end
+
+    def create_pagination
+
+        @first_page = 1
+        count = @products.count
+
+        @last_page = (count / LIMITED_PRODUCTS_NUMBER)
+        if count % LIMITED_PRODUCTS_NUMBER
+        @last_page  += 1
+        end
+
+        @products = @products.offset((@page - 1) * LIMITED_PRODUCTS_NUMBER).limit(LIMITED_PRODUCTS_NUMBER)
     end
 end

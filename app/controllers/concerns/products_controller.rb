@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
     before_action :redirect_to_root_if_not_log_in, except: [:index, :show, :products]
 
     before_action :prepare_index, only: [:index, :products]
-    before_action :get_products, only: [:index, :products]
-    before_action :create_pagination, only: [:index, :products]
+    before_action :get_products, only: [:index]
+    before_action :create_pagination, only: [:index]
 
     LIMITED_PRODUCTS_NUMBER = 20
 
@@ -63,6 +63,8 @@ class ProductsController < ApplicationController
         redirect_to action: :index
         
     end
+
+    private
 
     def product_permit
         params.require(:product).permit([:name, :description, :price, :subcategory_id])

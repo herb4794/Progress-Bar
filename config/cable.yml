@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: pb5_production
+  url: redis://localhost:6379/1
+  channel_prefix: ProgressBarCourse_production

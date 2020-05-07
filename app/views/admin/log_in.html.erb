@@ -1,10 +1,10 @@
-<h3>管理者登入</h3>
-    <%= form_tag admin_create_session_path,method: :post do %>
-    <%= label_tag :email, "Email" %>
-    <%= text_field_tag :email %><br />
+<h3>管理員登入</h3>
+<%= form_tag admin_create_session_path, method: :post do%>
+  <%= label_tag :email, "Email" %>
+  <%= text_field_tag :email %><br />
 
-    <%= label_tag :password, "Password"  %>:
-    <%= password_field_tag :password %><br />
-    
-    <%= submit_tag "登入" %>
+  <%= label_tag :password, "Password" %>
+  <%= password_field_tag :password %><br />
+
+  <%= submit_tag "登入" %>
 <% end %>

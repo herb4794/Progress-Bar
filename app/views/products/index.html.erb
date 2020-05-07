@@ -1,35 +1,35 @@
-<div class="container main-container">
-    <div class="row left-bar">
-        <ul class="col-xs-12">
-          <%= render 'products/components/side_bar', categories: @categories %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render 'products/components/side_bar', categories: @categories %>
+    </div>
+    <div class="col-xs-9">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="jumbotron">
+            <h1><%= @ad[:title] %></h1>
+            <p><%= @ad[:des] %></p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button"><%= @ad[:action_title] %></a></p>
+          </div>
         </div>
-        <div class="col-xs-9 big-layer">
-            <div class="row">
-                <div class="col-xs-12">
-                <div class="jumbotron">
-                <h1><%= @ad[:title] %></h1>
-                <p><%= @ad[:des] %></p>
-                <p><a class="btn btn-primary btn-lg" href="#" role="button"><%= @ad[:action_title] %> </a></p>
-                </div>
-                </div>
-            </div>
-            <div class="row">
-            <% @products.each do |product, index| %>
-            <div class="col-xs-3">
+      </div>
+      <div class="row">   
+        <% @products.each do |product| %>
+          <div class="col-xs-3">
             <%= render 'products/card/small', product: product %>
-            </div>
-            <% end %>
-            </div>
-            <div class="row">
-            <div class="col-xs-12">
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
             <%= render 'products/components/pagination', 
-            page: @page,
-            first_page: @first_page,
-            last_page: @last_page,
-            url_custom_helper_name: :root_path
+              page: @page,
+              first_page: @first_page,
+              last_page: @last_page,
+              url_custom_helper_name: :root_path
             %>
-            </div>
-            </div>
         </div>
-    </div> 
+      </div>
+    </div>
+  </div>
 </div>

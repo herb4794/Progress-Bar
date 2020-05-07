@@ -1,43 +1,41 @@
-<h3></h3>编辑產品</h3>
-<%= form_for @product ,method: :put do |p| %>
-<%= p.label :name, "名稱" %>:
-<%= p.text_field :name %><br />
+<h3>編輯產品</h3>
+<%= form_for @product, method: :put do |f|%>
+  <%= f.label :name, "名稱" %>
+  <%= f.text_field :name %><br />
 
-<%= p.label :description, "敘述" %>:
-<%= p.text_field :description %><br />
+  <%= f.label :description, "敘述" %>
+  <%= f.text_field :description %><br />
 
-<%= p.label :image, "圖片" %>:<br/>
-<%= image_tag (@product.image_url || "https://www.infincommunity.com/wp-content/uploads/woocommerce-placeholder-300x300.png"), size: "300x200", id: "target", original_url: @product.image_url  %><br/>
-<%= p.file_field :image, accept: "image/gif, image/jpeg, image/png" %><br />
+  <%= f.label :image, "圖片" %><br/>
+  <%= image_tag (@product.image_url || "https://via.placeholder.com/350x200"), size: "300x200", id: "target", original_url: @product.image_url %><br/>
+  <%= f.file_field :image, accept: "image/gif, image/jpeg, image/png" %><br />
 
-<%= p.label :price, "價格" %>:
-<%= p.number_field :price %><br />
+  <%= f.label :price, "價格" %>
+  <%= f.number_field :price %><br />
 
-<%= p.label :subcategory_id, "類別" %>
-<%= p.select("subcategory_id", Subcategory.all.collect {|s| [ s.name_with_category, s.id ] }, 
-{ include_blank: "請選擇" })%><br />
+  <%= f.label :subcategory_id, "副類別" %>
+  <%= f.select("subcategory_id", Subcategory.all.collect {|s| [ s.name_with_category, s.id ] }, {include_blank: '請選擇'}) %><br />
 
-
-<%= p.submit "更新" %>
+  <%= f.submit "更新" %>
 <% end %>
 
 <script>
-    $(function(){
-        $("#product_image").change(function(){
-            readURL(this, "target");
-        });
-        
-        function readURL(input, image_tag_id) {
-            if(input.files && input.files[0]){
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $("#" + image_tag_id).attr("src", e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }else{
-                var original_url = $("#" + image_tag_id).attr("original_url");
-                $("#" + image_tag_id).attr("src", original_url);
-            }
-        }
+  $(function(){
+    $("#product_image").change(function(){
+      readURL(this, "target");
     });
+    
+    function readURL(input, image_tag_id){
+      if(input.files && input.files[0]){
+        var reader = new FileReader();
+        reader.onload = function (e) {
+           $("#" + image_tag_id).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }else{
+        var original_url = $("#" + image_tag_id).attr("original_url");
+        $("#" + image_tag_id).attr('src', original_url);
+      }
+    }
+  });
 </script>

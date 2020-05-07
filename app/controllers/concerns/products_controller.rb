@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
     before_action :redirect_to_root_if_not_log_in, except: [:index, :show, :products]
 
-    before_action :prepare_index, only: [:index, :products]
+    before_action :prepare_index, only: [:index, :products, :show]
     before_action :get_products, only: [:index]
     before_action :create_pagination, only: [:index]
 

@@ -1,0 +1,38 @@
+<div class="container main-container">
+    <div class="row left-bar">
+        <div class="col-xs-12">
+        <%= render 'products/components/side_bar', categories: @categories %>
+        </div>
+        <div class="col-xs-9 big-layer">
+            <div class="row">
+            <div class="col-xs-12">
+                <p>類別：<%= @product.subcategory.try(:name_with_category) %></p>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <%= image_tag (@product.image_url || "https://www.infincommunity.com/wp-content/uploads/woocommerce-placeholder-300x300.png"), class: "img-responsive" %>
+            </div>
+        </div>
+            <div class="col-xs-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h5><%= "#{@product.name}" %></h5>
+                    </div>
+                    <div class="panel-body">
+                        <p><%= @product.description %></p>
+                    </div>
+                </div>
+
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        購買
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

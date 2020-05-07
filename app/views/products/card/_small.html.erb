@@ -1,7 +1,11 @@
 <div class="thumbnail">
-  <%= image_tag (product.image_url || "https://www.infincommunity.com/wp-content/uploads/woocommerce-placeholder-300x300.png") %>
+  <%= link_to product_path(product) do %>
+    <%= image_tag (product.image_url || "https://www.infincommunity.com/wp-content/uploads/woocommerce-placeholder-300x300.png") %>
+  <% end %>
   <div class="caption">
+  <%= link_to product_path(product) do %>
     <h3><%= "#{product.id}. #{product.name}" %></h3>
+  <% end %>
     <p><%= product.description %></p>
     <p>類別：<%= product.subcategory.try(:name_with_category) %></p>
     <% if current_user %>

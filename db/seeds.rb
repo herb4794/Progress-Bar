@@ -49,7 +49,7 @@ PRODUCTS_COUNT = 40
   product = {
     name: "柳橙汁",
     description: "好喝柳橙汁",
-    image_url: "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?h=350&auto=compress&cs=tinysrgb",
+    # image_url: "https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?h=350&auto=compress&cs=tinysrgb",
     subcategory: subcategory
   }
 

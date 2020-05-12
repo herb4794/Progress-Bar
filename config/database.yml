@@ -9,7 +9,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: herb1331
   password: 4794
-  host: 127.0.0.1
+  host: 192.168.1.128
   port: 8889
 
 development:

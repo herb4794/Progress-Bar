@@ -42,7 +42,7 @@ gem 'jbuilder', '~> 2.5'
 # mysql2
 gem 'mysql2', '~> 0.4.9'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
